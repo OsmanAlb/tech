@@ -1,5 +1,6 @@
 package com.ural.tech;
 
+import com.ural.tech.config.FileUploadConfiguration;
 import com.ural.tech.store.Points;
 import com.ural.tech.store.PointsRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +14,14 @@ public class TechApplication {
     public static void main(String[] args) {
         SpringApplication.run(TechApplication.class, args);
     }
+
+    @Bean
+    public CommandLineRunner start(FileUploadConfiguration fileUploadConfiguration) {
+        return (args) -> {
+            fileUploadConfiguration.run();
+        };
+    }
+
 
 //    @Bean
 //    public CommandLineRunner demo(PointsRepository repository) {

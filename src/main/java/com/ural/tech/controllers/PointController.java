@@ -4,6 +4,7 @@ package com.ural.tech.controllers;
 import com.ural.tech.schemas.AllPointResponse;
 import com.ural.tech.schemas.PointRequest;
 import com.ural.tech.schemas.PointResponse;
+import com.ural.tech.service.FileStorageService;
 import com.ural.tech.service.PointService;
 import com.ural.tech.utils.EndPoint;
 import com.ural.tech.utils.Status;
@@ -14,7 +15,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Optional;
 
 @Tag(name = "Создание и обработка заявок.(изменение)")
@@ -24,9 +29,11 @@ import java.util.Optional;
 public class PointController {
 
     PointService pointService;
+    FileStorageService fileStorageService;
 
-    public PointController(PointService pointService) {
+    public PointController(PointService pointService, FileStorageService fileStorageService) {
         this.pointService = pointService;
+        this.fileStorageService = fileStorageService;
     }
 
     @Operation(
@@ -35,18 +42,21 @@ public class PointController {
                     "Отдает создали или нет"
 
     )
+
     @PostMapping(value = EndPoint.creatPoint)
     @CrossOrigin(allowCredentials = "true", originPatterns = "*")
-    public PointResponse creatPoint(
-            @Parameter(schema = @Schema(implementation = PointRequest.class))
-            @RequestBody() PointRequest request) {
+    public PointResponse handleFileUpload2(@RequestParam("pointCoordinates") String pointCoordinates,
+                                                  @RequestParam("description") String description,
+                                                  @RequestParam("file") MultipartFile file){
         //todo проверка координат
         Status status = Status.GREAT;
+        PointRequest request = new PointRequest(description,pointCoordinates);
         Boolean isSave = pointService.save(status, request);
+        if (file != null) fileStorageService.save(file);
 
         return new PointResponse(status.toString(), request.getPointCoordinates(), request.getDescription());
-    }
 
+    }
 
     @GetMapping(value = EndPoint.all)
     @CrossOrigin(allowCredentials = "true", originPatterns = "*")
@@ -57,4 +67,7 @@ public class PointController {
 
         return pointService.getAllPointForResponse(coordinates, limit, offset);
     }
+
+
+
 }
