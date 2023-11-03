@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 public class FileStorageService implements FileStorageRepository {
     static final Logger log =
             LoggerFactory.getLogger(FileStorageService.class);
-    private final Path path =  Paths.get(System.getProperty("user.dir") + "/src/main/resources/static/fileStorage");
+    private final Path path =  Paths.get(System.getProperty("user.dir") + "/fileStorage");
 
     @Override
     public void init() {
