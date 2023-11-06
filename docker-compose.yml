@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: client:0.0.2
+    image: client:0.0.1
     build:
       context: .
     container_name: app

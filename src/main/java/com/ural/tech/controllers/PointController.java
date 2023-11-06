@@ -6,6 +6,7 @@ import com.ural.tech.schemas.PointRequest;
 import com.ural.tech.schemas.PointResponse;
 import com.ural.tech.service.FileStorageService;
 import com.ural.tech.service.PointService;
+import com.ural.tech.store.Points;
 import com.ural.tech.utils.EndPoint;
 import com.ural.tech.utils.Status;
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,15 +47,15 @@ public class PointController {
     @PostMapping(value = EndPoint.creatPoint)
     @CrossOrigin(allowCredentials = "true", originPatterns = "*")
     public PointResponse handleFileUpload2(@RequestParam("pointCoordinates") String pointCoordinates,
-                                                  @RequestParam("description") String description,
-                                                  @RequestParam("file") MultipartFile file){
+                                           @RequestParam("description") String description,
+                                           @RequestParam(value = "file", required = false) MultipartFile file) {
         //todo проверка координат
         Status status = Status.GREAT;
-        PointRequest request = new PointRequest(description,pointCoordinates);
-        Boolean isSave = pointService.save(status, request);
+        PointRequest request = new PointRequest(pointCoordinates, description);
+        Points pointFromBD = pointService.save(status, request);
         if (file != null) fileStorageService.save(file);
 
-        return new PointResponse(status.toString(), request.getPointCoordinates(), request.getDescription());
+        return new PointResponse(pointFromBD.getId(), status.toString(), request.getPointCoordinates(), request.getDescription());
 
     }
 
@@ -67,7 +68,6 @@ public class PointController {
 
         return pointService.getAllPointForResponse(coordinates, limit, offset);
     }
-
 
 
 }
