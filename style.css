@@ -1,0 +1,22 @@
+.map {
+	width: 700px;
+	height: 500px;
+	background-color: #333;
+}
+
+[class*="copyrights-pane"] {
+    display: none !important;
+  }
+
+[class*="ground-pane"] {
+    filter: grayscale(1);
+}
+
+.balloon__address{
+    color: black;
+    font-size: larger;
+}
+.balloon a{
+    color: rgb(254, 0, 229);
+    text-decoration: none;
+}
