@@ -1,38 +1,193 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+.section {
+  padding: 0rem 0;
+}
+
+.label {
+  margin: 5% ;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  font-size: 0px;
+  background-color: #fff;
+}
+
+.label span {
+  background-color: #fff;
+  font-weight: lighter;
+  font-size: medium;
+  text-align: center;
+  align-items: center;
+  padding-top: 0.5rem;
+  font-family: "Roboto";
+  padding: 0rem 0;
+}
+
+input {
+  display: none;
+}
+
+img {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.images {
+  /* max-width: 104px;
+  max-height: 104px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  margin: 0.5rem 0.5rem;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.image button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: #67CE67;
+}
+
+.image button:hover {
+  background-color: #67ce675c;
+}
+
+.image p {
+  padding: 0 0.5rem;
+  margin: 0;
+}
+
+.upload-btn {
+  cursor: pointer;
+  display: flex;
+  margin: 0 auto;
+  border: none;
+  border-radius: 5px;
+  width: 6rem;
+  /* height: 1.5rem; */
+  color: white;
+  background-color: #67CE67;
+  font-size: small;
+  margin-bottom: 20px;
+} 
+.btn{
+  margin-bottom: 15%;
+  padding: 10px;
+}
+ .btn_to{
+  position: absolute;
+  display: flex;
+  margin-left: 60%;
+  margin-right: 5%;
+  padding: 20px;
+  /* margin: 5%; */
+  text-align: center;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 5px solid transparent;
+  /* width: 6rem; */
+  height: 2rem;
+  color: rgb(8, 8, 8);
+  background-color: #fff;
+  font-size: small;
+ }
+ .btn_out{
+  
+  position: absolute;
+  display: flex;
+  /* margin-left: 5% ; */
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 5px solid transparent;
+  /* width: 6rem; */
+  height: 2rem;
+  color: rgb(8, 8, 8);
+  background-color: #fff;
+  font-size: small;
+  margin-bottom: 20px;
+ }
+ .btn_out:hover{
+  color:rgb(255, 255, 255);
+  background-color: #000000;
+  transition: .3s;
+ }
+ .btn_to:hover{
+  color:rgb(255, 255, 255);
+  background-color: #000000;
+  transition: .3s;
+ }
+
+.label:hover,
+.upload-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.error {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.error span {
+  color: red;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Icon */
+.icon{
+  background-color: #fff;
+  /* width: 100%; */
+}
+svg {
+  background-color: #fff;
+  stroke: currentcolor;
+  fill: currentcolor;
+  stroke-width: 0;
+  height: 2em;
+  width: 2em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* modal open style */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+/* .App {
+  
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+} */
+
+.App .openModalBtn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  background-color: cornflowerblue;
   color: white;
+  cursor: pointer;
+  
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  padding: 0;
+  margin: 0;
 }
